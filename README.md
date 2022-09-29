@@ -1,7 +1,3 @@
-# terraform-google-gke-image-pull-secret
-
-Handy module to create kubernetes image pull secret for private GCR image on GKE cluster
-
 ## Requirements
 
 | Name | Version |
@@ -38,7 +34,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Cluster name | `string` | `"aws-cluster-develop"` | no |
 | <a name="input_gcr_domain"></a> [gcr\_domain](#input\_gcr\_domain) | Domain used for GCR | `string` | `"https://eu.gcr.io"` | no |
-| <a name="input_namespace"></a> [namespace](#input\_namespace) | Kubernetes namespace to deploy image pull secret to | `string` | n/a | yes |
+| <a name="input_namespaces"></a> [namespaces](#input\_namespaces) | Kubernetes namespaces to deploy image pull secret to | `set(string)` | n/a | yes |
 | <a name="input_project"></a> [project](#input\_project) | Google Project ID | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | Google Region | `string` | n/a | yes |
 | <a name="input_service_account_display_name"></a> [service\_account\_display\_name](#input\_service\_account\_display\_name) | Service account display name | `string` | `""` | no |

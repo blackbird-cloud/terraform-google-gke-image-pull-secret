@@ -14,9 +14,9 @@ variable "region" {
   description = "Google Region"
 }
 
-variable "namespace" {
-  type        = string
-  description = "Kubernetes namespace to deploy image pull secret to"
+variable "namespaces" {
+  type        = set(string)
+  description = "Kubernetes namespaces to deploy image pull secret to"
 }
 
 variable "service_account_id" {

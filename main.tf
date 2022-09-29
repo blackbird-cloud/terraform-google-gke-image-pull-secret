@@ -6,8 +6,8 @@ locals {
 }
 
 resource "google_service_account" "docker_pull_secret" {
-  account_id   = var.service_account_id != "" ? var.service_account_id : "${var.namespace}-pull-secret"
-  display_name = var.service_account_display_name != "" ? var.service_account_display_name : "${var.namespace}-pull-secret"
+  account_id   = var.service_account_id != "" ? var.service_account_id : "image-pull-secret"
+  display_name = var.service_account_display_name != "" ? var.service_account_display_name : "image-pull-secret"
   project      = var.project
 }
 
@@ -41,9 +41,10 @@ locals {
 }
 
 resource "kubernetes_secret" "image_pull_secrets" {
+  for_each = var.namespaces
   metadata {
     name      = "docker-pull-secret"
-    namespace = var.namespace
+    namespace = each.value
   }
   data = local.docker_pull_secret
 
